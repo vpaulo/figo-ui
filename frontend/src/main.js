@@ -1,43 +1,35 @@
-import './style.css';
-import './app.css';
+import "./style.css";
+import "./app.css";
 
-import logo from './assets/images/logo-universal.png';
-import {Greet} from '../wailsjs/go/main/App';
+import { EventsOn, EventsEmit, LogInfo } from "../wailsjs/runtime/runtime";
+import { Greet, LoadComponentsFromApi, GetTokens } from "../wailsjs/go/main/App";
+import { tryCatch, assert } from "./try_catch";
 
-document.querySelector('#app').innerHTML = `
-    <img id="logo" class="logo">
-      <div class="result" id="result">Please enter your name below 👇</div>
-      <div class="input-box" id="input">
-        <input class="input" id="name" type="text" autocomplete="off" />
-        <button class="btn" onclick="greet()">Greet</button>
-      </div>
-    </div>
-`;
-document.getElementById('logo').src = logo;
+function init() {
+  const generate_btn = document.querySelector(".generate");
+  generate_btn?.addEventListener("click", getComponents);
+}
 
-let nameElement = document.getElementById("name");
-nameElement.focus();
-let resultElement = document.getElementById("result");
+async function getComponents() {
+  const page = document.querySelector('input[name="page"]');
+  const token = document.querySelector('input[name="token"]');
+  const prefix = document.querySelector('input[name="prefix"]');
 
-// Setup the greet function
-window.greet = function () {
-    // Get name
-    let name = nameElement.value;
+  const [e, components] = await tryCatch(
+    await LoadComponentsFromApi({
+      page: page?.value,
+      token: token?.value,
+      prefix: prefix?.value,
+    }),
+  );
 
-    // Check if the input is empty
-    if (name === "") return;
+  assert(e, "Get components API call failed");
 
-    // Call App.Greet(name)
-    try {
-        Greet(name)
-            .then((result) => {
-                // Update result with data back from App.Greet()
-                resultElement.innerText = result;
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    } catch (err) {
-        console.error(err);
-    }
-};
+  const [err, tokens] = await tryCatch(await GetTokens());
+
+  assert(err, "Get Tokens failed");
+
+  console.log(">>>> CALLING: ", e, components, tokens);
+}
+
+init();

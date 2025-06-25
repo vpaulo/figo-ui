@@ -1,12 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>figo-ui</title>
-</head>
-<body>
-<div id="app"></div>
-<script src="./src/main.js" type="module"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>figo-ui</title>
+    </head>
+    <body>
+        <div id="app">
+            <aside>
+                <div class="config">
+                    <div class="field">
+                        <label for="page">Page ID</label>
+                        <input type="text" name="page" value="4TY92OjhtdVceoYBqlkfhU" placeholder="Figma page id" />
+                    </div>
+                    <div class="field">
+                        <label for="token">Token</label>
+                        <input
+                            type="password"
+                            name="token"
+                            value="figd_J2gB6y3zB10jKf90oBDVLgQ87KFADthb-efzgWkr"
+                            placeholder="Figma user token"
+                        />
+                    </div>
+                    <div class="field">
+                        <label for="prefix">Prefix</label>
+                        <input type="text" name="prefix" value="vp" placeholder="Prefix to be added to components" />
+                    </div>
+                    <div class="field">
+                        <button class="generate btn primary">Generate</button>
+                    </div>
+                </div>
+            </aside>
+            <main></main>
+        </div>
+        <script src="./src/main.js" type="module"></script>
+    </body>
 </html>
