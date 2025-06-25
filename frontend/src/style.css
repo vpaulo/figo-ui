@@ -1,26 +1,119 @@
+/* Trimmed version of https://fonts.googleapis.com/css?family=Arizonia|Open+Sans:400,600&display=swap with firefox fix */
+/* latin-ext */
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src:
+        local("Open Sans Regular"),
+        local("OpenSans-Regular"),
+        url("https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFW50bbck.woff2") format("woff2");
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src:
+        local("Open Sans Regular"),
+        local("OpenSans-Regular"),
+        url("https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2") format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
+        U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src:
+        local("Open Sans SemiBold"),
+        local("OpenSans-SemiBold"),
+        url("https://fonts.gstatic.com/s/opensans/v17/mem5YaGs126MiZpBA-UNirkOXOhpOqc.woff2") format("woff2");
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src:
+        local("Open Sans SemiBold"),
+        local("OpenSans-SemiBold"),
+        url("https://fonts.gstatic.com/s/opensans/v17/mem5YaGs126MiZpBA-UNirkOUuhp.woff2") format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
+        U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+    --colour-neutral-100: #ffffff;
+    --colour-neutral-200: #fafafa;
+    --colour-neutral-300: #f5f5f5;
+    --colour-neutral-400: #ededed;
+    --colour-neutral-500: #d9d9d9;
+    --colour-neutral-600: #cacfd2;
+    --colour-neutral-700: #8c8c8c;
+    --colour-neutral-800: #595959;
+    --colour-neutral-900: #414141;
+    --colour-neutral-1000: #262626;
+    --colour-neutral-1100: #1f1f1f;
+    --colour-neutral-1200: #141414;
+    --colour-neutral-1300: #000000;
+    --colour-fresh-blue-500: hsl(208, 100%, 50%);
+
+    --base-grey: var(--colour-neutral-400);
+    --base-colour: var(--colour-neutral-900);
+    --background: var(--colour-neutral-300);
+    --primary: var(--colour-fresh-blue-500);
+
+    --aside-width: 300px;
+}
+
+*,
+*:before,
+*::after {
+    box-sizing: border-box;
+}
 html {
-    background-color: rgba(27, 38, 54, 1);
-    text-align: center;
-    color: white;
+    scroll-behavior: smooth;
+}
+body,
+input,
+button,
+textarea {
+    font-family: "Open Sans", Arial, sans-serif;
 }
 
 body {
     margin: 0;
-    color: white;
-    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-}
-
-@font-face {
-    font-family: "Nunito";
-    font-style: normal;
-    font-weight: 400;
-    src: local(""),
-    url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
+    padding: 0;
+    background-color: var(--background);
+    color: var(--base-colour);
 }
 
 #app {
-    height: 100vh;
+    height: 100dvh;
     text-align: center;
+}
+
+input {
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+
+    width: 100%;
+    height: 40px;
+    color: var(--base-colour);
+    font-size: 0.9rem;
+    padding: 8px 6px;
+    text-overflow: ellipsis;
+    background-color: var(--base-grey);
 }
