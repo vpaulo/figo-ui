@@ -3,7 +3,7 @@ module figo-ui
 go 1.24.2
 
 require (
-	github.com/vpaulo/figo v0.3.0
+	github.com/vpaulo/figo v0.3.1
 	github.com/wailsapp/wails/v2 v2.10.1
 )
 

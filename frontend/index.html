@@ -5,6 +5,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <title>figo-ui</title>
     </head>
+
     <body>
         <div id="app">
             <aside>
@@ -25,8 +26,31 @@
                         <button class="generate btn primary">Generate</button>
                     </div>
                 </div>
+                <hr />
+                <fg-list></fg-list>
             </aside>
-            <main></main>
+            <main>
+                <style id="tokens"></style>
+                <fg-content>
+                    <div class="tabset">
+                        <!-- Tab 1 -->
+                        <input type="radio" name="tabset" id="tab1" checked />
+                        <label for="tab1">Tokens</label>
+                        <!-- Tab 2 -->
+                        <input type="radio" name="tabset" id="tab2" />
+                        <label for="tab2">CSS</label>
+                        <!-- Tab 3 -->
+                        <input type="radio" name="tabset" id="tab3" />
+                        <label for="tab3">HTML</label>
+
+                        <div class="tab-panels">
+                            <section id="tokens-source" class="tab-panel"></section>
+                            <section id="css-source" class="tab-panel"></section>
+                            <section id="html-source" class="tab-panel"></section>
+                        </div>
+                    </div>
+                </fg-content>
+            </main>
         </div>
         <script src="./src/main.js" type="module"></script>
     </body>

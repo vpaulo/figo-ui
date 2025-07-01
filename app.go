@@ -25,6 +25,7 @@ type Components struct {
 type App struct {
 	ctx        context.Context
 	config     Config
+	figma      figo.Figma
 	components Components
 }
 
@@ -68,6 +69,8 @@ func (a *App) LoadComponentsFromApi(config Config) (map[string]fg.Element, error
 		Prefix:   a.config.Prefix,
 	}
 
+	a.figma = figma
+
 	// Get Figma data from API
 	file, err := figma.GetData()
 	if err != nil {
@@ -99,6 +102,28 @@ func (a *App) LoadComponentsFromApi(config Config) (map[string]fg.Element, error
 
 func (a *App) GetTokens() string {
 	return a.components.tokens
+}
+
+func (a *App) GetComponentById(id string) []string {
+	component, ok := a.components.data[id]
+
+	var code []string
+
+	if ok {
+		css, err := a.figma.GenerateComponentCSS(component)
+		if err != nil {
+			runtime.LogErrorf(a.ctx, "Failed to get component CSS: %+v", err)
+		}
+		code = append(code, css)
+
+		html, err := a.figma.GenerateComponentHTML(component)
+		if err != nil {
+			runtime.LogErrorf(a.ctx, "Failed to get component HTML: %+v", err)
+		}
+		code = append(code, html)
+	}
+
+	return code
 }
 
 // Greet returns a greeting for the given name

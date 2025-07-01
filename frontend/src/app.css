@@ -1,6 +1,6 @@
 #app {
     display: grid;
-    grid-template-columns: var(--aside-width) 1fr;
+    grid-template-columns: var(--fg-aside-width) 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "aside main";
 
@@ -9,13 +9,16 @@
 
 aside,
 main {
-    background-color: var(--colour-neutral-100);
+    background-color: var(--fg-colour-neutral-100);
 }
 
 aside {
     grid-area: aside;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
+
 main {
     grid-area: main;
 }
@@ -34,7 +37,7 @@ main {
 }
 
 .btn {
-    color: var(--base-colour);
+    color: var(--fg-base-colour);
     border: 0;
     padding: 5px 10px;
     font-weight: 600;
@@ -48,15 +51,96 @@ main {
 }
 
 /* .btn.default {
-    background-color: var(--base-grey);
+    background-color: var(--fg-base-grey);
 } */
 
 .btn.primary {
-    background-color: var(--primary);
+    background-color: var(--fg-primary);
     color: #fff;
 }
 
 /* .btn.warning {
-    background-color: var(--base-red);
+    background-color: var(--fg-base-red);
     color: #fff;
 } */
+
+hr {
+    border-color: var(--fg-background);
+    margin: 20px 0;
+}
+
+fg-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-grow: 1;
+    flex-basis: 0;
+    overflow: auto;
+}
+
+fg-list > div {
+    padding: 4px;
+    border-bottom: 2px solid var(--fg-background);
+    cursor: pointer;
+}
+
+fg-list > div:hover {
+    background-color: var(--fg-background);
+}
+
+/*
+ CSS for tabs
+*/
+.tabset {
+    height: 100%;
+}
+
+.tabset > input[type="radio"] {
+    display: none;
+}
+
+.tabset .tab-panel {
+    display: none;
+}
+
+.tab-panels {
+    height: calc(100% - 35px);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: auto;
+}
+
+#tab1:checked ~ .tab-panels > #tokens-source,
+#tab2:checked ~ .tab-panels > #css-source,
+#tab3:checked ~ .tab-panels > #html-source {
+    display: block;
+}
+
+.tabset > label {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tabset > label:hover,
+.tabset > input:focus + label,
+.tabset > input:checked + label {
+    color: var(--fg-primary);
+}
+
+.tabset > input:checked + label {
+    border-color: var(--fg-colour-neutral-600);
+    border-bottom: 1px solid var(--fg-colour-neutral-100);
+    margin-bottom: -1px;
+}
+
+.tab-panel {
+    /*padding: 30px 0;*/
+    border-top: 1px solid var(--fg-colour-neutral-600);
+    height: 100%;
+}
