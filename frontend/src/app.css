@@ -113,7 +113,8 @@ fg-list > div:hover {
 
 #tab1:checked ~ .tab-panels > #tokens-source,
 #tab2:checked ~ .tab-panels > #css-source,
-#tab3:checked ~ .tab-panels > #html-source {
+#tab3:checked ~ .tab-panels > #html-source,
+#tab4:checked ~ .tab-panels > #preview {
     display: block;
 }
 
